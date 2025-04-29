@@ -1,8 +1,108 @@
-body {
-  background-color: #f8f9fa;
+/* Background & Overlay for Home Page */
+.home-container {
+  position: relative;
+  background-image: url('../assets/landing_page.png'); /* Path to your background image */
+  background-size: cover; /* Ensures the image covers the whole screen */
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: transparent; /* Set background to transparent */
 }
 
-.card {
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Optional Dark Overlay on the Background */
+.home-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(11, 10, 10, 0.44); /* Lighter or no overlay */
+  z-index: 1; /* Ensures the overlay is below the text content */
+}
+
+/* Animation Classes */
+.fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.slideInLeft {
+  animation: slideInLeft 1.2s ease-out forwards;
+}
+
+/* Fade-In-Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide-In-Left Animation */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Ensuring Content is Above the Overlay */
+.home-container .content {
+  position: relative;
+  z-index: 2; /* Content is above the overlay */
+}
+
+/* Text Color, Bold, and Font Styling */
+.home-container h2 {
+  color: #ffffff; /* White font color */
+  font-weight: bold; /* Bold font */
+  text-transform: uppercase; /* Optional: Makes text uppercase */
+  font-size: 3rem; /* Adjust the size of the heading */
+}
+
+.home-container p {
+  color: #ffffff; /* White font color */
+  font-weight: normal; /* Regular font */
+  font-size: 1.2rem; /* Adjust font size */
+}
+
+/* Responsive Font Sizes and Padding for Smaller Screens */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 20px; /* Reduce padding on smaller screens */
+  }
+
+  h2 {
+    font-size: 2rem; /* Smaller font size for the heading */
+  }
+
+  p {
+    font-size: 1rem; /* Smaller font size for the paragraph */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 10px; /* Further reduce padding for smaller screens */
+  }
+
+  h2 {
+    font-size: 1.5rem; /* Adjust font size for mobile devices */
+  }
+
+  p {
+    font-size: 0.9rem; /* Smaller paragraph font size */
+  }
 }

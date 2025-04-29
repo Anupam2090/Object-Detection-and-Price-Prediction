@@ -1,14 +1,19 @@
 import React from 'react';
-import Navbar from './components/Navbar';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './components/Navbar';
 import Home from './pages/Home';
+import Predict from './pages/Predict';
 
 function App() {
-    return (
-        <>
-            <Navbar />
-            <Home />
-        </>
-    );
+  return (
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/predict" element={<Predict />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
