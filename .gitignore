@@ -1,0 +1,22 @@
+# Python
+venv/
+*.pyc
+__pycache__/
+
+# Environment
+.env
+
+# Model weights
+*.pt
+
+# OS files
+.DS_Store
+
+# Binaries
+*.dll
+*.lib
+*.pyd
+
+# Ignore uploaded images, but keep folder
+uploads/*
+!uploads/.gitkeep
