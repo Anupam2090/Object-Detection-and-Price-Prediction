@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import UploadForm from "../components/UploadForm";
 import ResultCard from "../components/ResultCard";
 import { Container, Card } from "react-bootstrap";
+import { motion } from "framer-motion";
+import "../styles/style.css"; 
 
 const Predict = () => {
   const [predictions, setPredictions] = useState([]);
@@ -24,23 +26,42 @@ const Predict = () => {
   };
 
   return (
-    <Container className="py-5">
-      <h2 className="text-center mb-4">Upload Image to Predict</h2>
-      <UploadForm onSubmit={handlePredictionSubmit} />
-      <div className="mt-5">
-        {predictions.length > 0 ? (
-          predictions.map((result, index) => (
-            <Card key={index} className="mb-3">
-              <Card.Body>
-                <ResultCard result={result} />
-              </Card.Body>
-            </Card>
-          ))
-        ) : (
-          <p>No predictions available.</p>
-        )}
-      </div>
-    </Container>
+    <div className="predict-container">
+      <div className="overlay"></div>
+      <Container className="predict-content">
+        <motion.h2
+          className="predict-title"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          Upload Image to Predict
+        </motion.h2>
+
+        <motion.div
+          className="predict-card"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <UploadForm onSubmit={handlePredictionSubmit} />
+        </motion.div>
+
+        <div className="results">
+          {predictions.length > 0 ? (
+            predictions.map((result, index) => (
+              <Card key={index} className="mb-3">
+                <Card.Body>
+                  <ResultCard result={result} />
+                </Card.Body>
+              </Card>
+            ))
+          ) : (
+            <p className="no-prediction">No predictions available.</p>
+          )}
+        </div>
+      </Container>
+    </div>
   );
 };
 

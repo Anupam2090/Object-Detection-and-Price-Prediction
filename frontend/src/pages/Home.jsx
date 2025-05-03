@@ -1,14 +1,11 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { motion } from "framer-motion";
-import backgroundImage from "../assets/landing_page.png"; // Import the image
+import "../styles/style.css"; 
 
 const Home = () => {
   return (
-    <div
-      className="home-container"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
+    <div className="home-container">
       <Container className="py-5 d-flex justify-content-center align-items-center">
         <div className="text-center">
           <motion.h2
